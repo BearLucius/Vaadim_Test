@@ -1,5 +1,6 @@
-package com.example.application.data;
+package com.example.application.data.obj;
 
+import com.example.application.data.AbstractEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
