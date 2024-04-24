@@ -12,11 +12,11 @@ public class SecurityService {
     public SecurityService(AuthenticationContext authenticationContext) {
         this.authenticationContext = authenticationContext;
     }
-
+// Получить аутентификационных пользователей
     public UserDetails getAuthenticatedUser() {
         return authenticationContext.getAuthenticatedUser(UserDetails.class).get();
     }
-
+// Выход из учетной записи
     public void logout() {
         authenticationContext.logout();
     }

@@ -25,6 +25,7 @@ public class CrmService {
         this.statusRepository = statusRepository;
     }
 
+    //Если Фильтр = Нуль или Фильтр = Пуст, тогда возвращаем ВСЕХ, иначе через ContactRepository.Search ищем через фильтр
     public List<Contact> findAllContacts(String stringFilter) {
         if (stringFilter == null || stringFilter.isEmpty()) {
             return contactRepository.findAll();
@@ -32,15 +33,16 @@ public class CrmService {
             return contactRepository.search(stringFilter);
         }
     }
-
+    // Возвращает кол-во контактов
     public long countContacts() {
         return contactRepository.count();
     }
-
+    // Удаление контакта
     public void deleteContact(Contact contact) {
         contactRepository.delete(contact);
     }
-
+    // Сохранение Контакта
+    // Если Контакт = Нуль, выдать ошибку
     public void saveContact(Contact contact) {
         if (contact == null) {
             System.err.println("Contact is null. Are you sure you have connected your form to the application?");

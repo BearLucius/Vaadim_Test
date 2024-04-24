@@ -23,6 +23,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) 
 public class LoginE2ETest extends BrowserTestBase {
 
+    /*
+
+   @Autowired используется для автоматического связывания компонентов бина между собой.
+   Она позволяет автоматически настраивать свойства бина и методы, упрощая тем самым процесс инъекции зависимостей
+
+     */
+
     @Autowired
     Environment env;
 
@@ -31,11 +38,26 @@ public class LoginE2ETest extends BrowserTestBase {
         System.setProperty("vaadin.launch-browser", "false");
     }
 
+    /*
+
+    Используется для обозначения того, что аннотированный метод должен выполняться перед каждым методом
+    @Test, @RepeatedTest, @ParameterizedTest, или @TestFactory в текущем классе
+
+     */
+
     @BeforeEach
     void openBrowser() {
         getDriver().get("http://localhost:" +
             env.getProperty("local.server.port") + "/"); 
     }
+
+    /*
+
+    @BrowserTest - тип тестирования, который проверяет, работает ли приложение так, как ожидается,
+    в нескольких браузерах, операционных системах и устройствах
+
+     */
+
     @BrowserTest
     public void loginAsValidUserSucceeds() {
         LoginViewElement loginView = $(LoginViewElement.class).onPage().first();

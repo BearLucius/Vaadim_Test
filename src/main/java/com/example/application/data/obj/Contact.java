@@ -11,7 +11,15 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Contact extends AbstractEntity {
+/*
+    Сразу же можно заметить ещё одну таблицу со своими полями
+    NotEmpty обозначает что поле не должно быть нулевым
 
+    Соединение с другими колонками осуществляется в данном классе через @ManyToOne
+
+    @JsonIgnoreProperties-  аннотация на уровне класса, которая помечает свойство или список свойств,
+    которые Json будет игнорировать
+ */
     @NotEmpty
     private String firstName = "";
 

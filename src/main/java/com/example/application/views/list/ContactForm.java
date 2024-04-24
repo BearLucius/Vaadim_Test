@@ -32,6 +32,7 @@ public class ContactForm extends FormLayout {
   Button delete = new Button("Delete");
   Button close = new Button("Cancel");
 
+
   public ContactForm(List<Company> companies, List<Status> statuses) {
     addClassName("contact-form");
 

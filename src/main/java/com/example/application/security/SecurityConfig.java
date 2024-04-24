@@ -17,6 +17,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SecurityConfig extends VaadinWebSecurity {
     // Сам по себе класс является связанным с LoginView, так как без метода configure не вышло бы никак войти после ввода данных
+    // Так же, если объяснять его методику работы, то работает он следующим образом.
+    // Мы передаём в configure класс Http Security с названием http, добавляя сюда Exception для ловли ошибок.
+    // После же, через Лямда выражение мы запрашиваем получение авторизации, если всё прошло успешно, мы проходим дальше, если нет - нам выдаёт что "Логин или пароль не действительны".
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth ->
